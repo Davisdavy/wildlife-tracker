@@ -1,8 +1,8 @@
+
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.*;
-import static org.junit.Assert.*;
-import org.sql2o.*;
+
 import static junit.framework.TestCase.assertEquals;
 import static junit.framework.TestCase.assertTrue;
 
@@ -74,5 +74,19 @@ public  class AnimalTest {
     }
 
 
+    //one-to-many-rship
+    @Test
+    public void save_savesBadgeNoIntoDB_true() {
+        testAnimal.save();
+        Sighting testRanger= new Sighting("Bubbles", testAnimal.getId());
+        testRanger.save();
+        Sighting savedRanger= Sighting.find(testRanger.getId());
+        Assert.assertEquals(savedRanger.getBadgeNo(), testAnimal.getId());
+    }
+    //Instantiating Constants;
+    @Test
+    public void animal_instantiatesWithLowHealthyState(){
+    assertEquals(testAnimal.getHealth(), (Animal.MAX_HEALTH_STATE =));
+    }
 
 }

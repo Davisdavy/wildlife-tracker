@@ -1,6 +1,6 @@
 import java.util.Objects;
 import org.sql2o.*;
-import java.util.ArrayList;
+
 import java.util.List;
 
 public class Animal {
@@ -62,6 +62,15 @@ public class Animal {
                     .addParameter("id", id)
                     .executeAndFetchFirst(Animal.class);
             return animal;
+        }
+    }
+    //Return all Ranger objects belonging to animal
+    public List<Sighting> getRanger() {
+        try(Connection con = DB.sql2o.open()) {
+            String sql = "SELECT * FROM sightings where badgeNo=:id";
+            return con.createQuery(sql)
+                    .addParameter("id", this.id)
+                    .executeAndFetch(Sighting.class);
         }
     }
 
