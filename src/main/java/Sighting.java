@@ -3,64 +3,50 @@ import java.util.List;
 import org.sql2o.*;
 public class Sighting {
     private String rangerName;
-    private int badgeNo;
     private int id;
+    private String animal;
+    private String date;
+    private String month;
+    private String location;
 
 
-    public Sighting(String rangerName, int badgeNo){
+    public Sighting(int id,String rangerName,String location,String animal,String date,String month){
         this.rangerName = rangerName;
-        this.badgeNo = badgeNo;
+        this.id=id;
+        this.animal = animal;
+        this.animal=animal;
+        this.date=date;
+        this.location=location;
+        this.month=month;
     }
     public String getRangerName(){
         return rangerName;
     }
-    public int getBadgeNo(){
-        return badgeNo;
-    }
     public int getId(){
         return id;
     }
+    public String getLocation() { return location;}
+    public String getDate() { return date; }
+    public String getAnimal() { return animal; }
+    public String getMonth() { return month; }
 
-    //Overriding
-    @Override
-    public boolean equals(Object otherSighting){
-        if (!(otherSighting instanceof Sighting)) {
-            return false;
-        } else {
-            Sighting newSighting = (Sighting) otherSighting;
-            return this.getRangerName().equals(newSighting.getRangerName()) &&
-                    this.getBadgeNo() == newSighting.getBadgeNo();
-        }
-    }
 
     //save method save()
+
     public void save() {
         try(Connection con = DB.sql2o.open()) {
-            String sql = "INSERT INTO sighting (rangerName, badgeNo) VALUES (:rangerName, :badgeNo)";
+            String sql = "INSERT INTO sighting (rangerName, location,animal,date,month) VALUES (:rangerName, :location,:animal,:date,:month)";
             this.id = (int) con.createQuery(sql, true)
                     .addParameter("rangerName", this.rangerName)
-                    .addParameter("badgeNo", this.badgeNo)
+                    .addParameter("location",location)
+                    .addParameter("animal",animal)
+                    .addParameter("date",date)
+                    .addParameter("month",month)
                     .executeUpdate()
                     .getKey();
         }
     }
-    //all
-    public static List<Sighting> all() {
-        String sql = "SELECT * FROM sighting";
-        try(Connection con = DB.sql2o.open()) {
-            return con.createQuery(sql).executeAndFetch(Sighting.class);
-        }
-    }
-    //find()
-    public static Sighting find(int id) {
-        try(Connection con = DB.sql2o.open()) {
-            String sql = "SELECT * FROM sighting where id=:id";
-            Sighting ranger = con.createQuery(sql)
-                    .addParameter("id", id)
-                    .executeAndFetchFirst(Sighting.class);
-            return ranger;
-        }
-    }
+
 
 
 

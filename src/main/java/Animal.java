@@ -7,13 +7,32 @@ public class Animal {
     private int animalId;
     private  String name;
     private int id;
+    private String threatType;
+    private String health;
+    private String level;
+    private String age;
 
 
-    public Animal(String name, int animalId){
+    public Animal(String name, int animalId, String threatType){
         this.name = name;
         this.animalId = animalId;
+        this.threatType = threatType;
+
+//        this.health=health;
+//        this.age=age;
+//        this.id=id;
+//        this.level=level;
     }
 
+//    public String getHealth() {
+//        return health;
+//    }
+//
+//    public String getAge() {
+//        return age;
+//    }
+
+//    public String getLevel(){ return this.level;}
     public String getName(){
         return name;
     }
@@ -21,6 +40,8 @@ public class Animal {
         return animalId;
     }
     public int getId(){ return  id;}
+    public String getThreatType(){ return  threatType;}
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -39,15 +60,19 @@ public class Animal {
 
     public void save() {
         try(Connection con = DB.sql2o.open()) {
-            String sql = "INSERT INTO animals (name,animalId ) VALUES (:name, :animalId)";
+            String sql = "INSERT INTO animals (name,animalId,threatType ) VALUES (:name, :animalId,  :threatType)";
             this.id = (int) con.createQuery(sql, true)
                     .addParameter("name", this.name)
                     .addParameter("animalId", this.animalId)
+                    .addParameter("threatType", this.threatType)
+//                    .addParameter("health",health)
+//                    .addParameter("age",age)
+//                    .addParameter("level",level)
                     .executeUpdate()
                     .getKey();
         }
     }
-    //all()
+//    //all()
     public static List<Animal> all() {
         String sql = "SELECT * FROM animals";
         try(Connection con = DB.sql2o.open()) {
@@ -65,12 +90,13 @@ public class Animal {
         }
     }
     //Return all Ranger objects belonging to animal
-    public List<Sighting> getRanger() {
+
+    public List<Ranger> getRangers() {
         try(Connection con = DB.sql2o.open()) {
-            String sql = "SELECT * FROM sightings where badgeNo=:id";
+            String sql = "SELECT * FROM rangers where rangerBadge=:id";
             return con.createQuery(sql)
                     .addParameter("id", this.id)
-                    .executeAndFetch(Sighting.class);
+                    .executeAndFetch(Ranger.class);
         }
     }
 

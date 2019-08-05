@@ -11,7 +11,8 @@ public  class AnimalTest {
     @Rule
     public DatabaseRule database = new DatabaseRule();
 
-    public Animal testAnimal= new Animal("Wolf", 33350);
+    public Animal testAnimal= new Animal("Wolf", 33350,"Endangered");
+    public Ranger testRanger = new Ranger("Davis", 1);
 
     @Test
     public void Animal_instantiatesCorrectly_true() {
@@ -33,8 +34,8 @@ public  class AnimalTest {
     // Overriding equal()
     @Test
     public void equal_returnsTrueIfNameAndIdAreSame_true() {
-        Animal firstAnimal = new Animal("Wolf", 33350);
-        Animal anotherAnimal = new Animal("Wolf", 33350);
+        Animal firstAnimal = new Animal("Wolf", 33350,"Endangered");
+        Animal anotherAnimal = new Animal("Wolf", 33350,"Endangered");
         assertTrue(firstAnimal.equals(anotherAnimal));
     }
 
@@ -48,45 +49,36 @@ public  class AnimalTest {
     //Returning all database entries
     @Test
     public void all_returnsAllInstancesOfAnimal_true() {
-        Animal firstAnimal = new Animal("Wolf", 33350);
+        Animal firstAnimal = new Animal("Wolf", 33350,"Endangered");
         firstAnimal.save();
-        Animal secondAnimal = new Animal("Fox", 33310);
+        Animal secondAnimal = new Animal("Fox", 33310,"Common");
         secondAnimal.save();
         assertEquals(true, Animal.all().get(0).equals(firstAnimal));
         assertEquals(true, Animal.all().get(1).equals(secondAnimal));
     }
 
-
+    //Find animal by id
     @Test
-    public void save_assignsIdToObject() {
-        testAnimal.save();
-        Animal savedPerson = Animal.all().get(0);
-        assertEquals(testAnimal.getAnimalId(), savedPerson.getAnimalId());
-    }
-    //Test for finding animal by their id find()
-    @Test
-    public void find_returnsPersonWithSameId_secondPerson() {
-        Animal firstAnimal = new Animal("Wolf", 33350);
+    public void find_returnsAnimalWithSameId_secondPerson() {
+        Animal firstAnimal= new Animal("Wolf", 33350,"Endangered");
         firstAnimal.save();
-        Animal secondAnimal = new Animal("Harriet", 33350);
+        Animal secondAnimal = new Animal("Fox", 33310,"Endangered");
         secondAnimal.save();
         assertEquals(Animal.find(secondAnimal.getId()), secondAnimal);
     }
 
+    //1-many r-ship (1 ranger to many animals)
+    @Test
+    public void save_savesAnimalIdIntoDB_true() {
 
-    //one-to-many-rship
-    @Test
-    public void save_savesBadgeNoIntoDB_true() {
         testAnimal.save();
-        Sighting testRanger= new Sighting("Bubbles", testAnimal.getId());
+        Ranger testRanger = new Ranger("Davis", testAnimal.getId());
         testRanger.save();
-        Sighting savedRanger= Sighting.find(testRanger.getId());
-        Assert.assertEquals(savedRanger.getBadgeNo(), testAnimal.getId());
+        Ranger savedRanger = Ranger.find(testRanger.getId());
+        assertEquals(savedRanger.getRangerBadge(), testAnimal.getId());
     }
-    //Instantiating Constants;
-    @Test
-    public void animal_instantiatesWithLowHealthyState(){
-    assertEquals(testAnimal.getHealth(), (Animal.MAX_HEALTH_STATE =));
-    }
+
+
+
 
 }
