@@ -3,14 +3,17 @@ import org.junit.*;
 import static junit.framework.TestCase.assertTrue;
 import static org.junit.Assert.*;
 
+import java.sql.Timestamp;
+import java.text.DateFormat;
 import java.util.Arrays;
+import java.util.Date;
 
 public class SightingTest {
     @Rule
     public DatabaseRule database = new DatabaseRule();
 
-    public Sighting testSighting= new Sighting(1, "Davis","near river","Wolf","","");
-    public Animal testAnimal= new Animal("Wolf", 33350, "Endangered");
+    public Sighting testSighting= new Sighting(1, "Davis","near river","Wolf");
+    public Animal testAnimal= new Animal("Wolf");
     @Test
     public void sighting_instantiatesCorrectly_true() {
 
@@ -22,7 +25,23 @@ public class SightingTest {
         assertEquals("Davis", testSighting.getRangerName());
     }
 
+    //save date and month to database
+    @Test
+    public void save_recordsTimeOfCreationInDatabase() {
+        testSighting.save();
+        Timestamp savedSightingDate= Sighting.find(testSighting.getId()).getDate();
+        Timestamp rightNow = new Timestamp(new Date().getTime());
+        assertEquals(rightNow.getDay(), savedSightingDate.getDay() );
+    }
 
+    @Test
+    public void month_recordMonthInDatabase(){
+    testSighting.save();
+    testSighting.month();
+    Timestamp savedSightingMonth= Sighting.find(testSighting.getId()).getMonth();
+    Timestamp rightNow = new Timestamp(new Date().getTime());
+    assertEquals(DateFormat.getDateInstance().format(rightNow), DateFormat.getDateInstance().format(savedSightingMonth) );
+     }
 //    //Overriding equals()
 //    @Test
 //    public void equals_returnsTrueIfSightingNameAndIdAreSame_true() {
@@ -47,19 +66,23 @@ public class SightingTest {
 //
 //    @Test
 //    public void all_returnsAllInstancesOfSighting_true() {
-//        Sighting firstSighting = new Sighting("Davis",1, "near river","Wolf","","");;
+//        Sighting firstSighting = new Sighting(1,"Davis", "near river","Wolf");;
 //        firstSighting.save();
-//        Sighting secondSighting= new Sighting("Daniel",1, "near park","Wolf","","");
+//        Sighting secondSighting= new Sighting(2,"Dan", "near park","Fox");
 //        secondSighting.save();
 //        assertEquals(true, Sighting.all().get(0).equals(firstSighting));
 //        assertEquals(true, Sighting.all().get(1).equals(secondSighting));
 //    }
+
+
+
+
 //    //Find() by id
 //    @Test
-//    public void find_returnsMonsterWithSameId_secondSighting() {
-//        Sighting firstSighting = new Sighting("Davis",1, "near river","Wolf","","");
+//    public void find_returnsSightingsWithSameId_secondSighting() {
+//        Sighting firstSighting = new Sighting(1,"Davis", "near river","Wolf");
 //        firstSighting.save();
-//        Sighting secondSighting = new Sighting("Daniel",2, "near park","Wolf","","");
+//        Sighting secondSighting = new Sighting(2,"Dan", "near park","Fox");
 //        secondSighting.save();
 //        assertEquals(Sighting.find(secondSighting.getId()), secondSighting);
 //    }
