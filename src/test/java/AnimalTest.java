@@ -25,7 +25,10 @@ public  class AnimalTest {
         assertEquals("Wolf", testAnimal.getName());
     }
 
-
+    @Test
+    public void getAnimalThreatType_animalInstantiatesThreatType_string() {
+        assertEquals("Endangered", testAnimal.getThreatType());
+    }
     @Test
     public void getAnimalId_animalInstantiatesWithId_int() {
         assertEquals(33350, testAnimal.getAnimalId());
@@ -77,6 +80,31 @@ public  class AnimalTest {
         Ranger savedRanger = Ranger.find(testRanger.getId());
         assertEquals(savedRanger.getRangerBadge(), testAnimal.getId());
     }
+    //Instantiating all new animals as okay;
+    @Test
+    public void animal_instantiatesWithHalfHealthLevel(){
+        assertEquals(testAnimal.getHealthLevel(), (Animal.OKAY));
+    }
+
+    //Instantiating all new animals as young;
+    @Test
+    public void animal_instantiatesWithHalfAgeLevel(){
+        assertEquals(testAnimal.getAgeLevel(), (Animal.YOUNG));
+    }
+
+    //Count the number of animals sighted
+
+    @Test
+    public void allAnimalCounts_increaseAnimalsSighting(){
+        testAnimal.allAnimalCount();
+        assertTrue(testAnimal.getAnimalCount() > (Animal.MIN_ANIMAL_COUNT));
+    }
+
+
+
+
+
+
 
 
 

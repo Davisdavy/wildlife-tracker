@@ -8,39 +8,46 @@ public class Animal {
     private  String name;
     private int id;
     private String threatType;
-    private String health;
-    private String level;
-    private String age;
+    private String healthLevel;
+    private String ageLevel;
+    private int animalCount;
 
+    //Constants
+
+    public static final String HEALTHY = "healthy";
+    public final String ILL = "ill";
+    public static final String OKAY= "okay";
+    public static final String YOUNG = "young";
+    public static final String ADULT = "adult";
+    public static final int MIN_ANIMAL_COUNT=0;
+    public static final String NEWBORN = "newborn";
+
+    //constructor
 
     public Animal(String name, int animalId, String threatType){
         this.name = name;
         this.animalId = animalId;
         this.threatType = threatType;
+        healthLevel = "okay";
+        ageLevel = "young";
 
-//        this.health=health;
-//        this.age=age;
-//        this.id=id;
-//        this.level=level;
     }
 
-//    public String getHealth() {
-//        return health;
-//    }
-//
-//    public String getAge() {
-//        return age;
-//    }
 
-//    public String getLevel(){ return this.level;}
-    public String getName(){
-        return name;
-    }
-    public int getAnimalId(){
-        return animalId;
-    }
+    //getters
+
+    public String getName(){ return name; }
+    public int getAnimalId(){ return animalId; }
     public int getId(){ return  id;}
     public String getThreatType(){ return  threatType;}
+
+    public String getHealthLevel() { return healthLevel; }
+    public String getAgeLevel() { return ageLevel;}
+    public int getAnimalCount(){ return animalCount;}
+
+
+
+    //override
 
     @Override
     public boolean equals(Object o) {
@@ -99,5 +106,13 @@ public class Animal {
                     .executeAndFetch(Ranger.class);
         }
     }
+
+
+    //Increase number of count
+    public void allAnimalCount(){
+        animalCount++;
+    }
+
+
 
 }
