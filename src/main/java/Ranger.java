@@ -11,9 +11,11 @@ public class Ranger {
         this.rangerName = rangerName;
         this.rangerBadge = rangerBadge;
     }
-    public int getId(){
+
+    public int getId() {
         return id;
     }
+
     public String getRangerName() {
         return rangerName;
     }
@@ -21,8 +23,9 @@ public class Ranger {
     public int getRangerBadge() {
         return rangerBadge;
     }
+
     @Override
-    public boolean equals(Object otherRanger){
+    public boolean equals(Object otherRanger) {
         if (!(otherRanger instanceof Ranger)) {
             return false;
         } else {
@@ -33,7 +36,7 @@ public class Ranger {
     }
 
     public void save() {
-        try(Connection con = DB.sql2o.open()) {
+        try (Connection con = DB.sql2o.open()) {
             String sql = "INSERT INTO rangers (rangerName, rangerBadge) VALUES (:rangerName, :rangerBadge)";
             this.id = (int) con.createQuery(sql, true)
                     .addParameter("rangerName", this.rangerName)
@@ -46,19 +49,40 @@ public class Ranger {
     //Return all db entries
     public static List<Ranger> all() {
         String sql = "SELECT * FROM rangers";
-        try(Connection con = DB.sql2o.open()) {
+        try (Connection con = DB.sql2o.open()) {
             return con.createQuery(sql).executeAndFetch(Ranger.class);
         }
     }
 
     //find ranger by id find()
     public static Ranger find(int id) {
-        try(Connection con = DB.sql2o.open()) {
+        try (Connection con = DB.sql2o.open()) {
             String sql = "SELECT * FROM rangers where id=:id";
             Ranger ranger = con.createQuery(sql)
                     .addParameter("id", id)
                     .executeAndFetchFirst(Ranger.class);
             return ranger;
         }
+    }
+
+    //delete()
+    public void delete() {
+        try(Connection con = DB.sql2o.open()) {
+            String sql = "DELETE FROM rangers WHERE id = :id;";
+            con.createQuery(sql)
+                    .addParameter("id", id)
+                    .executeUpdate();
+        }
+    }
+
+    //sightings method
+
+    public List<Sighting> getSighting() {
+        try (Connection con = DB.sql2o.open()) {
+            String sql = "SELECT * FROM sightings;";
+            return con.createQuery(sql)
+                    .executeAndFetch(Sighting.class);
+        }
+
     }
 }

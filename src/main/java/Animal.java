@@ -4,14 +4,13 @@ import org.sql2o.*;
 import java.util.List;
 
 public class Animal {
-    private int animalId;
     private  String name;
     private int id;
 
 
     //Constants
 
-    public static final String  THREATTYPE ="Non-Endangered";
+    public static final String  THREAT_TYPE ="Non-Endangered";
     //constructor
 
     public Animal(String name){
@@ -22,9 +21,8 @@ public class Animal {
     //getters
 
     public String getName(){ return name; }
-    public int getAnimalId(){ return animalId; }
     public int getId(){ return  id;}
-    public static String getThreatType(){ return  THREATTYPE ;}
+    public static String getThreatType(){ return  THREAT_TYPE  ;}
 
 
 
@@ -36,14 +34,13 @@ public class Animal {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Animal animal = (Animal) o;
-        return animalId == animal.animalId &&
-                id == animal.id &&
+        return id == animal.id &&
                 Objects.equals(name, animal.name);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(animalId, name, id);
+        return Objects.hash(name, id);
     }
 
 
@@ -54,7 +51,7 @@ public class Animal {
             String sql = "INSERT INTO animals (name,threattype) VALUES (:name,:threattype)";
             this.id = (int) con.createQuery(sql, true)
                     .addParameter("name", this.name)
-                    .addParameter("threattype", THREATTYPE)
+                    .addParameter("threattype", THREAT_TYPE)
                     .executeUpdate()
                     .getKey();
         }

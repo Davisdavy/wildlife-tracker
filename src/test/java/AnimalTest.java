@@ -14,7 +14,7 @@ public  class AnimalTest {
     public DatabaseRule database = new DatabaseRule();
 
 
-    public Animal testAnimal= new Animal("Wolf");
+    public Animal testAnimal= new Animal("Elephant");
 
     @Test
     public void Animal_instantiatesCorrectly_true() {
@@ -24,7 +24,7 @@ public  class AnimalTest {
 
     @Test
     public void getAnimalName_animalInstantiatesWithName_string() {
-        assertEquals("Wolf", testAnimal.getName());
+        assertEquals("Elephant", testAnimal.getName());
     }
 
     @Test
@@ -33,14 +33,14 @@ public  class AnimalTest {
     }
     @Test
     public void getAnimalId_animalInstantiatesWithId_int() {
-        assertEquals(0,testAnimal.getAnimalId());
+        assertEquals(0,testAnimal.getId());
     }
 
     // Overriding equal()
     @Test
     public void equal_returnsTrueIfNameAndIdAreSame_true() {
-        Animal firstAnimal = new Animal("Wolf");
-        Animal anotherAnimal = new Animal("Wolf");
+        Animal firstAnimal = new Animal("Elephant");
+        Animal anotherAnimal = new Animal("Elephant");
         assertTrue(firstAnimal.equals(anotherAnimal));
     }
 
@@ -53,7 +53,7 @@ public  class AnimalTest {
     //Returning all database entries
     @Test
     public void all_returnsAllInstancesOfAnimal_true() {
-        Animal firstAnimal = new Animal("Wolf");
+        Animal firstAnimal = new Animal("Elephant");
         firstAnimal.save();
         Animal secondAnimal = new Animal("Fox");
         secondAnimal.save();

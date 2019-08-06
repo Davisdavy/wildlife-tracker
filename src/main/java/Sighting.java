@@ -1,6 +1,7 @@
 import java.sql.Time;
 import java.util.List;
 import java.sql.Timestamp;
+import java.util.Objects;
 
 import org.sql2o.*;
 public class Sighting {
@@ -13,7 +14,7 @@ public class Sighting {
     private Timestamp month;
 
 
-    public Sighting(int id,String rangerName,String location,String animal){
+    public Sighting(String location,String rangerName,int id,String animal){
         this.rangerName = rangerName;
         this.id=id;
         this.animal = animal;
@@ -37,13 +38,11 @@ public class Sighting {
 
     public void save() {
         try(Connection con = DB.sql2o.open()) {
-            String sql = "INSERT INTO sightings (rangerName, location,animal,date) VALUES (:rangerName, :location,:animal, now())";
+            String sql = "INSERT INTO sightings (location,rangerName,animal) VALUES (:rangerName, :location,:animal)";
             this.id = (int) con.createQuery(sql, true)
                     .addParameter("rangerName", this.rangerName)
                     .addParameter("location",location)
                     .addParameter("animal",animal)
-//                    .addParameter("date",date)
-//                    .addParameter("month",month)
                     .executeUpdate()
                     .getKey();
         }
@@ -66,6 +65,16 @@ public class Sighting {
             return con.createQuery(sql).executeAndFetch(Sighting.class);
         }
     }
+    @Override
+    public boolean equals(Object otherSighting){
+        if (!(otherSighting instanceof Sighting)) {
+            return false;
+        } else {
+            Sighting newSighting = (Sighting) otherSighting;
+            return this.getId() == newSighting.id;
+        }
+    }
+
 
 
     public void month() {

@@ -7,7 +7,7 @@ import java.util.Arrays;
 public class RangerTest {
 
     public Ranger testRanger = new Ranger("Davis", 1);
-    public Animal testAnimal= new Animal("Wolf");
+    public Sighting testSighting = new Sighting("Zone X", "Davis",1,"Elephant");
     @Rule
     public DatabaseRule database = new DatabaseRule();
 
@@ -46,6 +46,14 @@ public class RangerTest {
         Ranger savedRanger = Ranger.all().get(0);
         assertEquals(savedRanger.getId(), testRanger.getId());
     }
+    //delete()
+    @Test
+    public void delete_deletesRanger_true() {
+        testRanger.save();
+        int newRangerId = testRanger.getId();
+        testRanger.delete();
+        assertNull(Ranger.find(newRangerId));
+    }
 
     //Return all db entries
     @Test
@@ -80,8 +88,26 @@ public class RangerTest {
 //        Ranger[] rangers = new Ranger[] { firstRanger, secondRanger };
 //        assertTrue(testAnimal.getRangers().containsAll(Arrays.asList(rangers)));
 //    }
-//
-//
+
+
+    //replace above
+
+    @Test
+    public void getSightings_retrievesAllSightingsFromDatabase_sightingList() {
+        testRanger.save();
+        testSighting.save();
+        Sighting sighting2 = new Sighting("Zone B", "Dan",2,"Elephant");
+        sighting2.save();
+        Sighting[] sightings = new Sighting[]{testSighting, sighting2};
+        assertTrue(testRanger.getSighting().containsAll(Arrays.asList(sightings)));
+    }
+
+    @Test
+    public void equals_falseIfNotItsInstance_true()
+    {
+        Animal testAnimal = new Animal("Elephant");
+        assertNotEquals(testRanger, testAnimal);
+    }
 
 
 }
