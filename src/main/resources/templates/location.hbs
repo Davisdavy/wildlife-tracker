@@ -12,18 +12,18 @@
                         </tr>
                         </thead>
                         <tbody>
-                        #foreach($location in $locations)
+                        {{#each location}}
                         <tr>
-                            <th scope="row">$location.getId()</th>
-                            <td>$location.getName()</td>
+                            <th scope="row">{{id}}</th>
+                            <td>{{name}}</td>
                         </tr>
-                        #end
+                        {{/each}}
                         </tbody>
                     </table>
                 </div>
             </div>
 
-            <form method="post" action="/locations">
+            <form method="post" action="/location">
                 <div class="row" style="margin-top: 2rem">
                     <div class="col">
                         <input type="text" class="form-control" placeholder="name" id="name" name="name">

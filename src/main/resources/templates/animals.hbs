@@ -15,12 +15,12 @@
                 <div class="row">{{name}}</div>
                 <div class="row">{{THREAT_TYPE}}</div>
             {{/each}}
-            {{#each endangereds in endangereds}}
-                <div class="row">{{endangered.getId}}</div>
-                <div class="row">{{endangered.getName}}</div>
-                <div class="row">{{endangered.getHealth}}</div>
-                <div class="row">{{endangered.getThreatType}}</div>
-                <div class="row">{{endangered.getAge}}</div>
+            {{#each endangereds}}
+                <div class="row">{{id}}</div>
+                <div class="row">{{name}}</div>
+                <div class="row">{{health}}</div>
+                <div class="row">{{THREAT_TYPE}}</div>
+                <div class="row">{{age}}</div>
             {{/each}}
             </div>
         </div>
@@ -33,17 +33,17 @@
                         <div class="form-group row">
 
                             <div class="col-sm-10">
-                                <input type="text" id="inputName" name="inputName" placeholder="Name" class="form-control">
+                                <input type="text" id="name" name="name" placeholder="Name" class="form-control">
                             </div>
                         </div>
                             <div class="form-group form-check">
-                                <input type="checkbox" class="form-check-input" id="endangeredInput" name="endangeredInput">
-                                <label class="form-check-label" for="endangeredInput">Endangered?</label>
+                                <input type="checkbox" class="form-check-input" id="endangereds" name="endangereds">
+                                <label class="form-check-label" for="endangereds">Endangered?</label>
                             </div>
                             <div class="form-group row">
                                 <div class="col-sm-10">
                                     <label for="healthInput">Health</label>
-                                    <select class="form-control" name="healthInput" id="healthInput">
+                                    <select class="form-control" name="health" id="health">
                                         <option>healthy</option>
                                         <option>ill</option>
                                         <option>okay</option>
@@ -53,7 +53,7 @@
                             <div class="form-group row">
                                 <div class="col-sm-10">
                                     <label for="ageInput">Age</label>
-                                    <select class="form-control" id="ageInput" name="ageInput">
+                                    <select class="form-control" id="age" name="age">
                                         <option>newborn</option>
                                         <option>young</option>
                                         <option>adult</option>

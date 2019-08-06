@@ -15,14 +15,14 @@
                         </tr>
                         </thead>
                         <tbody>
-                        #foreach($sighting in $sightings)
+                        {{#each sighting}}
                         <tr>
-                            <th scope="row">$sighting.getId()</th>
-                            <td>$sighting.getRanger()</td>
-                            <td>$sighting.getLocation()</td>
-                            <td>$sighting.getAnimalId()</td>
+                            <th scope="row">{{id}}</th>
+                            <td>{{rangerName}}</td>
+                            <td>{{location}}/td>
+                            <td>{{animal}}</td>
                         </tr>
-                        #end
+                        {{/each}}
                         </tbody>
                     </table>
                 </div>

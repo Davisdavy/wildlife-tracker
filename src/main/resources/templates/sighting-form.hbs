@@ -5,14 +5,14 @@
         <div class="card">
             <h1>Record Sighting</h1>
             <form action="/sighting" method="post">
-                <input type="hidden" name="name" id="name" value="$ranger.getFirstName() $ranger.getLastName()">
+                <input type="hidden" name="name" id="name" value="{{rangerName}}">
                 <div class="form-group row">
                     <label for="animal" class="col-sm-2 col-form-label">Animal</label>
                     <div class="col-sm-10">
                         <select id="animal" name="animal" class="form-control">
-                            #foreach($animal in $animals)
-                            <option value="$animal.getId()">$animal.getName()</option>
-                            #end
+                            {{#each animal}}
+                            <option value="{{id}}">{{name}}</option>
+                            {{/each}}
                         </select>
                     </div>
                 </div>
@@ -20,9 +20,9 @@
                     <label for="location" class="col-sm-2 col-form-label">Location</label>
                     <div class="col-sm-10">
                         <select id="location" name="location" class="form-control">
-                            #foreach($location in $locations)
-                            <option value="$location.getName()">$location.getName()</option>
-                            #end
+                            {{#each location}}
+                            <option value="{{name}}">{{name}}</option>
+                            {{/each}}
                         </select>
                     </div>
                 </div>
