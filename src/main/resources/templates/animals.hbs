@@ -3,18 +3,27 @@
 <div class="container">
 
     <div class="card">
-        <h5>ID</h5>
-        <h5>Name</h5>
-        <h5>Health</h5>
-        <h5>Threat Type</h5>
-        <h5>Age</h5>
-        <div class="body">
-            <div class="top">
-            {{#each animals }}
-                <div class="row">{{id}}</div>
-                <div class="row">{{name}}</div>
-                <div class="row">{{THREAT_TYPE}}</div>
-            {{/each}}
+        <table class="table">
+            <thead class="thead-dark">
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Name</th>
+                <th scope="col">Health</th>
+                <th scope="col">type</th>
+                <th scope="col">Age</th>
+            </tr>
+            </thead>
+            <tbody>
+                     {{#each animals}}
+            <tr>
+                <th scope="row">{{id}}</th>
+                <td>{{name}}</td>
+                <td>Null</td>
+                <td>{{THREAT_TYPE}}</td>
+                <td>Null</td>
+            </tr>
+                     {{/each}}
+
             {{#each endangereds}}
                 <div class="row">{{id}}</div>
                 <div class="row">{{name}}</div>
@@ -22,6 +31,9 @@
                 <div class="row">{{THREAT_TYPE}}</div>
                 <div class="row">{{age}}</div>
             {{/each}}
+            </tbody>
+        </table>
+    </div>
             </div>
         </div>
 

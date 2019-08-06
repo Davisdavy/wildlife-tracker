@@ -9,12 +9,34 @@
 <!--begin main template-->
 <div class="container">
     <section>
-        <nav>
-            <a href="/">Home</a>
-            <a href="">Add</a>
-            <a href="" >Animals</a>
-            <a href="" >Locations</a>
+        <nav class="navbar navbar-expand-lg navbar-dark  static-top">
+<!--            <a class="navbar-brand" href="/">-->
+<!--                <img src="/images/icon.png" alt="">-->
+<!--            </a>-->
+<!--            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"-->
+<!--                    aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">-->
+<!--                <span class="navbar-toggler-icon"></span>-->
+<!--            </button>-->
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/">Rangers
+                            <span class="sr-only">(current)</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/sighting">Sigthings</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/animals">Animals</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/location">Locations</a>
+                    </li>
+                </ul>
+            </div>
         </nav>
+
     </section>
     <div class="">
     {{#block "content"}}

@@ -51,7 +51,7 @@ public class App {
             Map<String, Object> model = new HashMap<>();
             Ranger ranger = Ranger.find(Integer.parseInt(req.params(":id")));
             model.put("ranger", ranger);
-            model.put("sightings", ranger.getSighting());
+            //model.put("sighting", ranger.getSighting());
             return new ModelAndView(model, "ranger.hbs");
 
         }, new HandlebarsTemplateEngine());
@@ -60,12 +60,8 @@ public class App {
             Map<String, Object> model = new HashMap<>();
             Ranger ranger = Ranger.find(Integer.parseInt(req.params(":id")));
             model.put("ranger", ranger);
-
-
             model.put("animals", Animal.all());
-            model.put("locations", Location.all());
-
-
+            model.put("location", Location.all());
             model.put("sighting", Sighting.find(Integer.parseInt(req.params(":id"))));
             return new ModelAndView(model, "sighting-form.hbs");
 
@@ -92,7 +88,7 @@ public class App {
         get("/animals", (req, res) -> {
             Map<String, Object> model = new HashMap<>();
             model.put("animals", Animal.all());
-            model.put("endangeredAnimals", Endangereds.allEndangered());
+            model.put("endangereds", Endangereds.allEndangered());
             return new ModelAndView(model, "animals.hbs");
         }, new HandlebarsTemplateEngine());
 
@@ -124,21 +120,21 @@ public class App {
             return null;
         }, new HandlebarsTemplateEngine());
 
-        get("/sightings", (req, res) -> {
+        get("/sighting", (req, res) -> {
             Map<String, Object> model = new HashMap<>();
-            model.put("sightings", Sighting.all());
+            model.put("sighting", Sighting.all());
 
             return new ModelAndView(model, "sighting.hbs");
 
         }, new HandlebarsTemplateEngine());
 
-        get("/locations", (req, res) -> {
+        get("/location", (req, res) -> {
             Map<String, Object> model = new HashMap<>();
-            model.put("locations", Location.all());
+            model.put("location", Location.all());
             return new ModelAndView(model, "location.hbs");
         }, new HandlebarsTemplateEngine());
 
-        post("/locations", (req, res) -> {
+        post("/location", (req, res) -> {
             Map<String, Object> model = new HashMap<>();
 
             String locationName = req.queryParams("name");
@@ -148,7 +144,7 @@ public class App {
                 Location location = new Location(locationName);
                 location.save();
             }
-            res.redirect("/locations");
+            res.redirect("/location");
             return null;
         },new HandlebarsTemplateEngine());
     }
