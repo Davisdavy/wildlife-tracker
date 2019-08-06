@@ -7,33 +7,33 @@ public class EndangeredTest {
     @Rule
     public DatabaseRule database = new DatabaseRule();
 
-    public Endangered testEndangered = new Endangered("Elephant","Okay","Young");
+    public Endangereds testEndangereds = new Endangereds("Elephant","Okay","Young");
     @Test
     public void animal_instantiatesCorrectly() {
-        assertNotNull(testEndangered);
+        assertNotNull(testEndangereds);
     }
     @Test
     public void getThreatType_Endangered()
     {
-        assertEquals("Endangered" , Endangered.getThreatType());
+        assertEquals("Endangereds" , Endangereds.getThreatType());
     }
     @Test
     public void endanger_getName_Lion() {
-        assertEquals("Elephant", testEndangered.getName());
+        assertEquals("Elephant", testEndangereds.getName());
     }
     @Test
     public void endangered_getHealth_Okay() {
-        assertEquals("Okay", testEndangered.getHealth());
+        assertEquals("Okay", testEndangereds.getHealth());
     }
     @Test
     public void endangered_getTheAge_Old() {
-        assertEquals("Young", testEndangered.getAge());
+        assertEquals("Young", testEndangereds.getAge());
     }
     @Test
     public void save_assignsIdToObject() {
-        int originalid=testEndangered.getId();
-        testEndangered.save();
-        int savedid= testEndangered.getId();
+        int originalid= testEndangereds.getId();
+        testEndangereds.save();
+        int savedid= testEndangereds.getId();
         assertNotEquals(originalid,savedid);
     }
     @Test
@@ -45,7 +45,7 @@ public class EndangeredTest {
     public void return_falseNotInstance()
     {
         Location location = new Location("Zone X");
-        assertNotEquals(testEndangered, location);
+        assertNotEquals(testEndangereds, location);
     }
 
 

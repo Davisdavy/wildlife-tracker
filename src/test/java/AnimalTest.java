@@ -29,7 +29,7 @@ public  class AnimalTest {
 
     @Test
     public void getAnimalThreatType_animalInstantiatesThreatType_string() {
-        assertEquals("Non-Endangered", testAnimal.getThreatType());
+        assertEquals("Non-Endangereds", testAnimal.getThreatType());
     }
     @Test
     public void getAnimalId_animalInstantiatesWithId_int() {

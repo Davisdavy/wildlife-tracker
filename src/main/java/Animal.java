@@ -10,13 +10,10 @@ public class Animal {
 
     //Constants
 
-    public static final String  THREAT_TYPE ="Non-Endangered";
+    public static final String  THREAT_TYPE ="Non-Endangereds";
     //constructor
 
-    public Animal(String name){
-        this.name = name;
-
-    }
+    public Animal(String name){ this.name = name; }
 
     //getters
 
@@ -58,7 +55,7 @@ public class Animal {
     }
 //    //all()
     public static List<Animal> all() {
-        String sql = "SELECT * FROM animals where threattype = 'Non-Endangered'";
+        String sql = "SELECT * FROM animals where threattype = 'Non-Endangereds'";
         try(Connection con = DB.sql2o.open()) {
             return con.createQuery(sql)
                     .throwOnMappingFailure(false)

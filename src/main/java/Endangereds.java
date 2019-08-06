@@ -3,14 +3,14 @@ import org.sql2o.Connection;
 import java.util.List;
 import java.util.Objects;
 
-public class Endangered extends Animal {
+public class Endangereds extends Animal {
 
     private String health;
     private String age;
     private int id;
 
     //constants
-    private static final String THREAT_TYPE = "Endangered";
+    private static final String THREAT_TYPE = "Endangereds";
 
 //getters
 
@@ -21,7 +21,7 @@ public class Endangered extends Animal {
 
 //constructors
 
-    public Endangered(String name,String health, String age) {
+    public Endangereds(String name, String health, String age) {
         super(name);
         this.health = health;
         this.age = age;
@@ -33,7 +33,7 @@ public class Endangered extends Animal {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Endangered that = (Endangered) o;
+        Endangereds that = (Endangereds) o;
         return id == that.id &&
                 Objects.equals(health, that.health) &&
                 Objects.equals(age, that.age);
@@ -61,24 +61,24 @@ public class Endangered extends Animal {
 
 
 //list<>
-    public static List<Endangered> allEndangered() {
-        String sql = "SELECT * FROM animals where threattype='Endangered'";
+    public static List<Endangereds> allEndangered() {
+        String sql = "SELECT * FROM animals where threattype='Endangereds'";
         try(Connection con = DB.sql2o.open()) {
             return con.createQuery(sql)
                     .throwOnMappingFailure(false)
-                    .executeAndFetch(Endangered.class);
+                    .executeAndFetch(Endangereds.class);
         }
     }
 
 //find()
 
-    public static Endangered find(int id) {
+    public static Endangereds find(int id) {
         try(Connection con = DB.sql2o.open()) {
             String sql = "SELECT * FROM animals where id=:id";
-            Endangered endangered= con.createQuery(sql)
+            Endangereds endangereds = con.createQuery(sql)
                     .addParameter("id", id)
-                    .executeAndFetchFirst(Endangered.class);
-            return endangered;
+                    .executeAndFetchFirst(Endangereds.class);
+            return endangereds;
         }
     }
 

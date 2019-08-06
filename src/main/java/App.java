@@ -11,9 +11,8 @@ public class App {
 
         get("/",(request, response) ->{
             Map<String,Object>model = new HashMap<String, Object>();
-            model.put("rangers",Ranger.all());
-            model.put("animals","")
             return new ModelAndView(model,"index.hbs");
         },new HandlebarsTemplateEngine());
+
     }
 }
