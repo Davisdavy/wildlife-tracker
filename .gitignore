@@ -42,6 +42,7 @@ out/
 out
 .gradle
 gradle
+target/
 gradlew.bat
 gradlew
 settings.gradle
