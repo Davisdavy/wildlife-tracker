@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="6" failures="0" name="SightingTest" time="0.34" errors="0" skipped="0">
+<testsuite tests="6" failures="0" name="SightingTest" time="0.493" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
     <property name="java.vm.version" value="11.0.3+7-LTS"/>
@@ -62,10 +62,10 @@
     <property name="sun.desktop" value="gnome"/>
     <property name="sun.cpu.isalist" value=""/>
   </properties>
-  <testcase classname="SightingTest" name="Sighting_instantiatesWithRangerName_String" time="0.014"/>
-  <testcase classname="SightingTest" name="sighting_instantiatesCorrectly_true" time="0.009"/>
-  <testcase classname="SightingTest" name="find_returnsSightingsWithSameId_secondSighting" time="0.064"/>
-  <testcase classname="SightingTest" name="all_returnsAllInstancesOfSightings_true" time="0.141"/>
-  <testcase classname="SightingTest" name="save_assignsIdToObject" time="0.094"/>
-  <testcase classname="SightingTest" name="notInstanceOfSighting_false" time="0.018"/>
+  <testcase classname="SightingTest" name="Sighting_instantiatesWithRangerName_String" time="0.008"/>
+  <testcase classname="SightingTest" name="sighting_instantiatesCorrectly_true" time="0.01"/>
+  <testcase classname="SightingTest" name="find_returnsSightingsWithSameId_secondSighting" time="0.079"/>
+  <testcase classname="SightingTest" name="all_returnsAllInstancesOfSightings_true" time="0.195"/>
+  <testcase classname="SightingTest" name="save_assignsIdToObject" time="0.184"/>
+  <testcase classname="SightingTest" name="notInstanceOfSighting_false" time="0.017"/>
 </testsuite>
