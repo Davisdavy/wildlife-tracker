@@ -77,20 +77,6 @@ public class RangerTest {
     }
 
     //return all ranger object belonging to animals
-//    @Test
-//    public void getRangers_retrievesAllRangerFromDatabase_rangersList() {
-//
-//        testAnimal.save();
-//        Ranger firstRanger = new Ranger("Davis", testAnimal.getId());
-//        firstRanger.save();
-//        Ranger secondRanger = new Ranger("Dan", testAnimal.getId());
-//        secondRanger.save();
-//        Ranger[] rangers = new Ranger[] { firstRanger, secondRanger };
-//        assertTrue(testAnimal.getRangers().containsAll(Arrays.asList(rangers)));
-//    }
-
-
-    //replace above
 
     @Test
     public void getSightings_retrievesAllSightingsFromDatabase_sightingList() {
