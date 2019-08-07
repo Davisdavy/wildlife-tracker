@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="7" failures="0" name="AnimalTest" time="0.251" errors="0" skipped="0">
+<testsuite tests="7" failures="0" name="AnimalTest" time="0.165" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
     <property name="java.vm.version" value="11.0.3+7-LTS"/>
@@ -63,10 +63,10 @@
     <property name="sun.cpu.isalist" value=""/>
   </properties>
   <testcase classname="AnimalTest" name="Animal_instantiatesCorrectly_true" time="0"/>
-  <testcase classname="AnimalTest" name="save_insertsObjectIntoDatabase_Animal" time="0.086"/>
-  <testcase classname="AnimalTest" name="getAnimalId_animalInstantiatesWithId_int" time="0.007"/>
-  <testcase classname="AnimalTest" name="getAnimalName_animalInstantiatesWithName_string" time="0.007"/>
-  <testcase classname="AnimalTest" name="equal_returnsTrueIfNameAndIdAreSame_true" time="0.008"/>
-  <testcase classname="AnimalTest" name="getAnimalThreatType_animalInstantiatesThreatType_string" time="0.008"/>
-  <testcase classname="AnimalTest" name="all_returnsAllInstancesOfAnimal_true" time="0.135"/>
+  <testcase classname="AnimalTest" name="save_insertsObjectIntoDatabase_Animal" time="0"/>
+  <testcase classname="AnimalTest" name="getAnimalId_animalInstantiatesWithId_int" time="0"/>
+  <testcase classname="AnimalTest" name="getAnimalName_animalInstantiatesWithName_string" time="0"/>
+  <testcase classname="AnimalTest" name="equal_returnsTrueIfNameAndIdAreSame_true" time="0"/>
+  <testcase classname="AnimalTest" name="getAnimalThreatType_animalInstantiatesThreatType_string" time="0"/>
+  <testcase classname="AnimalTest" name="all_returnsAllInstancesOfAnimal_true" time="0.165"/>
 </testsuite>
