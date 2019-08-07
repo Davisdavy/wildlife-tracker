@@ -51,7 +51,6 @@ public class App {
             Map<String, Object> model = new HashMap<>();
             Ranger ranger = Ranger.find(Integer.parseInt(req.params(":id")));
             model.put("ranger", ranger);
-            //model.put("sighting", ranger.getSighting());
             return new ModelAndView(model, "ranger.hbs");
 
         }, new HandlebarsTemplateEngine());

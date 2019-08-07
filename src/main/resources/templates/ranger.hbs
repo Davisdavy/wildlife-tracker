@@ -3,14 +3,17 @@
     <div class="container">
         <div class="ranger-details">
             <div class="card">
-                <h1> Ranger Details</h1>
+                <h1> Details</h1>
+                {{#each ranger}}
                 <p>{{rangerName}} </p>
                 <p>{{rangerBadge}}</p>
+                {{/each}}
             </div>
+
 
         </div>
         <div>
-            <a class="btn btn-success" href="/ranger/{{id}}/new"> Record Sighting</a>
+            <a class="btn btn-success btn-block" href="/ranger/{{id}}/new"> Add Sighting</a>
         </div>
 
     </div>

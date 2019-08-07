@@ -2,40 +2,19 @@
 <html>
 <head>
     <title>{{#block "title"}}Wildlife{{/block}}</title>
-    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css' />
+    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css' />
     <link rel='stylesheet' href='css/styles.css' />
 </head>
 <body>
 <!--begin main template-->
 <div class="container">
     <section>
-        <nav class="navbar navbar-expand-lg navbar-dark  static-top">
-<!--            <a class="navbar-brand" href="/">-->
-<!--                <img src="/images/icon.png" alt="">-->
-<!--            </a>-->
-<!--            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"-->
-<!--                    aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">-->
-<!--                <span class="navbar-toggler-icon"></span>-->
-<!--            </button>-->
-            <div class="collapse navbar-collapse" id="navbarResponsive">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="/">Rangers
-                            <span class="sr-only">(current)</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/sighting">Sigthings</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/animals">Animals</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/location">Locations</a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
+        <div class="nav">
+            <a href="/">Rangers</a>
+            <a class="nav-link" href="/sighting">Sightings</a>
+            <a class="nav-link" href="/animals">Animals</a>
+            <a class="nav-link" href="/location">Locations</a>
+        </div>
 
     </section>
     <div class="">
@@ -47,9 +26,7 @@
 <!--end main template-->
 {{#block "footer"}}
     <div class="footer">
-        <footer>
-            <p>Wild App</p>
-        </footer>
+
     </div>
     </body>
     </html>
