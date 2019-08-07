@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="8" failures="0" name="EndangeredTest" time="2.481" errors="0" skipped="0">
+<testsuite tests="8" failures="0" name="EndangeredTest" time="0.8" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
     <property name="java.vm.version" value="11.0.3+7-LTS"/>
@@ -62,12 +62,12 @@
     <property name="sun.desktop" value="gnome"/>
     <property name="sun.cpu.isalist" value=""/>
   </properties>
-  <testcase classname="EndangeredTest" name="endanger_getName_Lion" time="2.003"/>
-  <testcase classname="EndangeredTest" name="getThreatType_Endangered" time="0.006"/>
-  <testcase classname="EndangeredTest" name="return_falseNotInstance" time="0.09"/>
-  <testcase classname="EndangeredTest" name="animal_instantiatesCorrectly" time="0.018"/>
-  <testcase classname="EndangeredTest" name="save_assignsIdToObject" time="0.341"/>
-  <testcase classname="EndangeredTest" name="endangered_getTheAge_Old" time="0.009"/>
-  <testcase classname="EndangeredTest" name="findEndangered_true" time="0.007"/>
-  <testcase classname="EndangeredTest" name="endangered_getHealth_Okay" time="0.007"/>
+  <testcase classname="EndangeredTest" name="endanger_getName_Lion" time="0.574"/>
+  <testcase classname="EndangeredTest" name="getThreatType_Endangered" time="0.014"/>
+  <testcase classname="EndangeredTest" name="return_falseNotInstance" time="0.018"/>
+  <testcase classname="EndangeredTest" name="animal_instantiatesCorrectly" time="0.006"/>
+  <testcase classname="EndangeredTest" name="save_assignsIdToObject" time="0.138"/>
+  <testcase classname="EndangeredTest" name="endangered_getTheAge_Old" time="0.016"/>
+  <testcase classname="EndangeredTest" name="findEndangered_true" time="0.017"/>
+  <testcase classname="EndangeredTest" name="endangered_getHealth_Okay" time="0.017"/>
 </testsuite>
