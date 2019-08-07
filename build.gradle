@@ -1,5 +1,6 @@
 plugins {
     id 'java'
+    id 'application'
 }
 apply plugin: 'application'
 group 'com.hero.catchup'
@@ -7,6 +8,9 @@ version '1.0-SNAPSHOT'
 
 sourceCompatibility = 1.8
 mainClassName = "App"
+archivesBaseName="wildlifetracker"
+ applicationName="wildlifetracker"
+
 
 repositories {
     mavenCentral()
@@ -20,3 +24,5 @@ dependencies {
     compile 'org.sql2o:sql2o:1.6.0'
     compile group: 'org.postgresql', name: 'postgresql', version: '42.2.2' // ADD ME FOR POSTGRES VERSION 10.x
 }
+defaultTasks = ['clean']
+//tasks stage(dependsOn: ['clean','installApp'])
