@@ -1,3 +1,4 @@
+
 # Compiled source #
 ############
 *.com
@@ -7,6 +8,7 @@
 *.o
 *.so
 *.bat
+
 # Packages #
 ############
 *.7z
@@ -17,9 +19,11 @@
 *.rar
 *.tar
 *.zip
+
 # Logs and databases #
 ############
 *.log
+
 # OS generated files #
 ############
 .DS_Store
@@ -29,6 +33,7 @@
 .Trashes
 ehthumbs.db
 Thumbs.db
+
 # Java and Gradle #
 ############
 build/
@@ -40,6 +45,7 @@ gradle
 gradlew.bat
 gradlew
 settings.gradle
+
 # IntelliJ #
 ############
 .idea
